@@ -5,7 +5,7 @@
     <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
       <!-- STORE NAME / STORE LOGO -->
       <div class="flex justify-start lg:flex-1 truncate">
-        <h1 class="text-xl font-bold truncate">{{ shop_name }}</h1>
+        <h1 class="text-xl font-bold truncate">{{ section.settings.shop_name }}</h1>
       </div>
 
       <!-- HAMBURGER MENU BUTTON -->
@@ -148,6 +148,12 @@
   {
     "name": "Header",
     "settings": [
+      {
+        "type": "text",
+        "id": "shop_name",
+        "label": "Main Title",
+        "default": "Chirag's Online Store"
+      },
       {
         "type": "text",
         "id": "mobile_menu_title",
