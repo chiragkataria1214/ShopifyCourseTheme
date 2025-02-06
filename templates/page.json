@@ -1,0 +1,10 @@
+
+// To render this add a new page in --- Online Store > Pages > Add Page
+{
+    "sections": {
+        "template": {
+            "type": "template-page"
+        }
+    },
+    "order": ["template"]
+}
