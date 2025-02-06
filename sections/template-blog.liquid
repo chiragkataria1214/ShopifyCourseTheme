@@ -1,7 +1,7 @@
 {% comment %} Paginate blog articles, displaying 3 articles per page {% endcomment %}
 <div class="py-8">
   {% paginate blog.articles by section.settings.number_of_blog_posts %}
-    <h1 class="text-center text-3xl font-bold"> {{ blog.title }} : Blog Category</h1>
+    <h1 class="text-center text-3xl font-bold"> {{ blog.title }} : {{section.settings.blog_category}}</h1>
 
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -49,6 +49,12 @@
 {
   "name": "Blog",
   "settings": [
+    {
+      "type": "text",
+      "id": "blog_category",
+      "label": "Blog Category",
+      "default": "Blog Category"
+    },
     {
       "type": "text",
       "id": "blog_read_more",
