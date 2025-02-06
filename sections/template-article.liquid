@@ -1,4 +1,4 @@
-<article class="py-8" itemscope itemtype="http://schema.org/BlogPosting"> {% comment %} SEO Tags {% endcomment %}
+<article class="py-8" itemscope itemtype="http://schema.org/BlogPosting"> <!-- SEO Tags -->
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'article_title' %}
@@ -7,13 +7,13 @@
             <a href="{{ blog.url }}" class="text-base uppercase text-gray-500 hover:text-gray-900 font-bold">
               {{- blog.title -}}
             </a>
-            <h1 class="text-4xl md:text-6xl font-medium" itemprop="headline">{{ article.title }}</h1> {% comment %} SEO Tags {% endcomment %}
+            <h1 class="text-4xl md:text-6xl font-medium" itemprop="headline">{{ article.title }}</h1> <!-- SEO Tags -->
           </div>
         </div>
 
       {% when 'article_author' %}
         <div class="flex items-center justify-center">
-          <div class="max-w-7xl text-center" itemscope itemtype="http://schema.org/Person">{% comment %} SEO Tags {% endcomment %}
+          <div class="max-w-7xl text-center" itemscope itemtype="http://schema.org/Person"><!-- SEO Tags -->
             {% if section.settings.enable_author %}
               <small itemprop="author">{{ article.author }}</small>
             {% endif %}
@@ -55,14 +55,14 @@
   {% endfor %}
 </article>
 
-{% comment %} Comment Section {% endcomment %}
+<!-- Comment Section -->
 {% if blog.comments_enabled? %}
   <div id="comments" class="my-8">
     {% if article.comments_count > 0 %}
       <div class="flex-1 items-center justify-center mx-auto max-w-4xl px-4">
         <h1 class="text-lg mb-4 font-medium">See what people are saying</h1>
 
-        {% paginate article.comments by 5 %} {% comment %} 5 comments on 1 page {% endcomment %}
+        {% paginate article.comments by 5 %} <!-- 5 comments on 1 page -->
           {% for comment in article.comments %}
             <div class="flex-1 border my-4 px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
               <span class="comment-author">{{ comment.author }}</span>
@@ -71,7 +71,7 @@
             </div>
           {% endfor %}
 
-          {% comment %} Use Pagination Snippet {% endcomment %}
+          <!-- Use Pagination Snippet -->
           <div class="max-w-6xl mx-auto">
             {% render 'pagination', pagination: paginate %}
           </div>
@@ -86,7 +86,7 @@
   <div id="comment_form" class="mb-8">
     {% form 'new_comment', article %}
       <div class="flex-1 mx-auto items-center justify-center max-w-4xl px-4">
-        {% comment %} ERROR {% endcomment %}
+        <!-- ERROR -->
         {% if form.errors %}
           <div class="border p-5">
             <div class="flex flex-row items-center w-full my-3">
@@ -103,7 +103,7 @@
               {% endfor %}
             </ul>
           </div>
-           {% comment %} SUCCESS {% endcomment %}
+           <!-- SUCCESS -->
         {% elsif form.posted_successfully? %}
           <div class="flex flex-row items-center w-full my-3 p-5">
             <div class="text-green-500">
@@ -161,10 +161,10 @@
   </div>
 {% endif %}
 
-{% comment %}
+<!--
 REFERENCE -- https://schema.org/Article
 TO TEST -- https://search.google.com/test/rich-results
-{% endcomment %}
+-->
 <script type="application/ld+json">
   {
       "@context": "http://schema.org",

@@ -1,11 +1,11 @@
-{% comment %} Paginate blog articles, displaying 3 articles per page {% endcomment %}
+<!-- Paginate blog articles, displaying 3 articles per page -->
 <div class="py-8">
   {% paginate blog.articles by section.settings.number_of_blog_posts %}
     <h1 class="text-center text-3xl font-bold"> {{ blog.title }} : {{section.settings.blog_category}}</h1>
 
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {% comment %} Card to list all articles in the Blog {% endcomment %}
+        <!-- Card to list all articles in the Blog -->
         {% for article in blog.articles %}
           <div class="w-full py-6 px-3">
             <div class="bg-white shadow-xl rounded-lg overflow-hidden">
@@ -23,7 +23,7 @@
 
               <div class="p-4">
                 <h1 class="text-xl font-medium my-4">{{ article.title }}</h1>
-                {% comment %} Show a truncated version of the article content {% endcomment %}
+                <!-- Show a truncated version of the article content -->
                 {% if article.excerpt.size > 0 %}
                   <p>{{ article.excerpt | strip_html | truncatewords: 15 }}</p>
                 {% else %}
@@ -37,7 +37,7 @@
         {% endfor %}
       </div>
     </div>
-      {% comment %} Use Pagination Snippet {% endcomment %}
+      <!-- Use Pagination Snippet -->
     <div class="max-w-6xl mx-auto">
         {% render 'pagination', pagination: paginate %}
     </div>

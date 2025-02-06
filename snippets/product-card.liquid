@@ -1,10 +1,10 @@
-{% comment %} product_product is the variable that is passed to this snippet {% endcomment %}
+<!-- product_product is the variable that is passed to this snippet -->
 <div class="w-full py-6 px-3">
   <div class="border bg-white shadow-lg rounded-lg overflow-hidden">
     <a href="{{ product_product.url }}">
       {% if product_product.featured_image %}
         <div class="h-80 overflow-hidden">
-            {% comment %} Added following classes for image zoom in effect--"transition duration-1000 ease-in-out hover:scale-105 transform" {% endcomment %}
+            <!-- Added following classes for image zoom in effect--"transition duration-1000 ease-in-out hover:scale-105 transform" -->
           <img
             class="w-full h-full object-cover transition duration-1000 ease-in-out hover:scale-105 transform"
             src="{{ product_product.featured_image | img_url: 'medium' }}"
@@ -18,13 +18,13 @@
     </a>
 
     <div class="flex flex-col p-4">
-     {% comment %} Vendor can be manufacturer/distributor etc {% endcomment %}
+     <!-- Vendor can be manufacturer/distributor etc -->
       <span class="text-sm text-gray-400">{{ product_product.vendor }}</span>
 
       <a href="{{ product_product.url }}" class="text-gray-700 uppercase font-medium">{{ product_product.title }}</a>
 
       <p class="text-gray-500">{{ product_product.price | money }}</p>
-      {% comment %} if we just use product.price and not | money than it will display price in just numbers only like: 30 not ₹30 {% endcomment %}
+      <!-- if we just use product.price and not | money than it will display price in just numbers only like: 30 not ₹30 -->
     </div>
   </div>
 </div>
