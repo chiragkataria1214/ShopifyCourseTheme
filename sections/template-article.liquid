@@ -1,4 +1,10 @@
-<article class="py-8" itemscope itemtype="http://schema.org/BlogPosting"> <!-- SEO Tags -->
+<!--
+REFERENCE -- https://schema.org/Article
+TO TEST -- https://search.google.com/test/rich-results
+-->
+
+<!-- ARTICLE SECTION -->
+<article class="py-8" itemscope itemtype="http://schema.org/BlogPosting"> <!-- SEO Tags: Declaring this as a BlogPosting schema -->
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'article_title' %}
@@ -7,15 +13,16 @@
             <a href="{{ blog.url }}" class="text-base uppercase text-gray-500 hover:text-gray-900 font-bold">
               {{- blog.title -}}
             </a>
-            <h1 class="text-4xl md:text-6xl font-medium" itemprop="headline">{{ article.title }}</h1> <!-- SEO Tags -->
+            <h1 class="text-4xl md:text-6xl font-medium" itemprop="headline">{{ article.title }}</h1> <!-- SEO Tag: Title of the article -->
+            </div>
           </div>
         </div>
 
       {% when 'article_author' %}
         <div class="flex items-center justify-center">
-          <div class="max-w-7xl text-center" itemscope itemtype="http://schema.org/Person"><!-- SEO Tags -->
+          <div class="max-w-7xl text-center" itemscope itemtype="http://schema.org/Person"><!-- SEO Tags: Declaring author as a Person schema -->
             {% if section.settings.enable_author %}
-              <small itemprop="author">{{ article.author }}</small>
+              <small itemprop="author">{{ article.author }}</small> <!-- SEO Tag: Author of the article -->
             {% endif %}
           </div>
         </div>
@@ -23,8 +30,8 @@
         <div class="flex items-center justify-center">
           <div class="max-w-7xl text-center">
             {% if section.settings.enable_published_date %}
-              <time itemprop="datePublished dateCreated" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
-                {{- article.published_at | date: format: 'on_date' -}}
+              <time itemprop="datePublished dateCreated" datetime="{{ article.published_at | date: '%Y-%m-%d' }}"><!-- SEO Tag: Date Published -->
+                {{- article.published_at | date: format: 'on_date' -}} 
               </time>
             {% endif %}
           </div>
@@ -45,7 +52,7 @@
 
       {% when 'article_content' %}
         <div class="flex items-center justify-center">
-          <div itemprop="articleBody" class="max-w-4xl">
+          <div itemprop="articleBody" class="max-w-4xl"> <!-- SEO Tag: Content of the article -->
             {{ article.content }}
           </div>
         </div>
@@ -55,7 +62,7 @@
   {% endfor %}
 </article>
 
-<!-- Comment Section -->
+<!-- COMMENT SECTION -->
 {% if blog.comments_enabled? %}
   <div id="comments" class="my-8">
     {% if article.comments_count > 0 %}
@@ -161,10 +168,10 @@
   </div>
 {% endif %}
 
-<!--
-REFERENCE -- https://schema.org/Article
-TO TEST -- https://search.google.com/test/rich-results
--->
+<!---Helps search engines understand and index the content of a webpage more efficiently. 
+This structured data provides detailed information about the content, 
+which can enhance the visibility and presentation of the page in search results (such as rich snippets).-->
+
 <script type="application/ld+json">
   {
       "@context": "http://schema.org",
@@ -197,7 +204,7 @@ TO TEST -- https://search.google.com/test/rich-results
   "name": "Template Article",
   "settings": [
     {
-      "type": "checkbox",
+      "type": "checkbox", //Impt
       "id": "enable_author",
       "default": true,
       "label": "Display Author Name"

@@ -1,17 +1,18 @@
 <h1 class="font-bold text-6xl">{{ section.settings.title }}</h1>
 <p class="font-medium text-2xl">{{ section.settings.subtext_html }}</p>
 
+
 {% if section.settings.btn_link == blank %}
   {% assign btn_url = shop.secure_url %}
+  <!-- If no button link is provided (blank), assign the secure URL of the shop as the button URL -->
 {% else %}
   {% assign btn_url = section.settings.btn_link %}
+  <!-- If a button link is provided, assign it to the btn_url variable -->
 {% endif %}
 
-<button>
   <a href="{{ btn_url }}" class="bg-violet-500 rounded-md px-4 py-2 mt-5 font-bold hover:bg-violet-700 duration-300">
     {{ section.settings.btn_label }}
   </a>
-</button>
 
 {% schema %}
 {
@@ -38,7 +39,7 @@
       "label": "Button Label"
     },
     {
-      "type": "url",
+      "type": "url", // IMPT
       "id": "btn_link",
       "label": "Button Link"
     }

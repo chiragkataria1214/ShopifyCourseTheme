@@ -1,61 +1,63 @@
-{% assign shop_name = shop.name %}
-{% assign main_menu_linklist = linklists[section.settings.menu].links %}
+<!-- Refer for all routes: https://shopify.dev/docs/api/liquid/objects/routes -->
+<!--  -->
 <div class="relative bg-white" x-data="{ mobileMenuOpen: true }">
   <div class="mx-auto px-4 sm:px-6">
     <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-      <!-- STORE NAME / STORE LOGO -->
+      <!-- STORE NAME -->
       <div class="flex justify-start lg:flex-1 truncate">
-        <h1 class="text-xl font-bold truncate">{{ section.settings.shop_name }}</h1>
+        <h1 class="text-xl font-bold truncate">{{ section.settings.shop_name }}</h1><!-- Can edit using theme editor -->
       </div>
 
-      <!-- HAMBURGER MENU BUTTON -->
+      <!-- MOBILE HAMBURGER MENU BUTTON -->
       <div class="-mr-2 -my-2 ml-3 md:hidden">
         <button
           x-on:click="mobileMenuOpen = true"
           type="button"
           class="bg-white p-2 inline-flex items-center justify-center focus:outline-none w-10 h-10">
-          {% render 'icon-menu' %}
+          {% render 'icon-menu' %} 
         </button>
       </div>
 
       <!-- NAVIGATION MENU -->
       <nav x-data="{ open: false }" class="hidden md:flex space-x-10">
-        {% for link in main_menu_linklist %}
+        <!-- linklists give lists of all menu in shopify: eg main-menu, footer-menu etc -->
+        {% for link in linklists[section.settings.menu].links %}
           <div class="relative">
-            {% if link.links != blank %}
-              <div class="mx-8 relative">
-                <button
-                  x-on:click="open = ! open"
-                  type="button"
-                  class="inline-flex items-center text-base text-gray-500 hover:text-gray-900">
-                  {{ link.title }}
-                  <span class="w-4 h-4 ml-2">{% render 'icon-chevron-down' %}</span>
-                </button>
+            {% if link.links != blank %} <!-- if the link has sublinks -->
+                    <div class="mx-8 relative">
+                      <button
+                        x-on:click="open = ! open"
+                        type="button"
+                        class="inline-flex items-center text-base text-gray-500 hover:text-gray-900">
+                        {{ link.title }}
+                        <span class="w-4 h-4 ml-2">{% render 'icon-chevron-down' %}</span>
+                      </button>
 
-                <div
-                  x-show="open"
-                  @click.away="open = false"
-                  class="absolute z-10 -ml-5 mt-5 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
-                  <div class="shadow-lg border ring-black ring-opacity-5 overflow-hidden rounded-lg">
-                    <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                      <div
+                        x-show="open"
+                        @click.away="open = false"
+                        class="absolute z-10 -ml-5 mt-5 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
+                        <div class="shadow-lg border ring-black ring-opacity-5 overflow-hidden rounded-lg">
+                          <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
 
-                      <!-- CREATE THE SUBLINK -->
-                      {% for childlink in link.links %}
-                        <a href="{{ childlink.url }}" class="-m-3 p-3 flex items start rounded-lg hover:bg-gray-100">
-                          <div class="ml-4">
-                            <p class="text-gray-900 text-base font-medium">
-                              {{ childlink.title }}
-                            </p>
+                            <!-- CREATE THE SUBLINK -->
+                            {% for childlink in link.links %}
+                              <a href="{{ childlink.url }}" class="-m-3 p-3 flex items start rounded-lg hover:bg-gray-100">
+                                <div class="ml-4">
+                                  <p class="text-gray-900 text-base font-medium">
+                                    {{ childlink.title }}
+                                  </p>
+                                </div>
+                              </a>
+                            {% endfor %}
+
                           </div>
-                        </a>
-                      {% endfor %}
+                        </div>
+                      </div>
 
                     </div>
-                  </div>
-                </div>
-
-              </div>
             {% else %}
+            <!-- if the link does not has sublinks -->
               <a href="{{ link.url }}" class="mx-8 text-base text-gray-500 hover:text-gray-900 {% if link.active==true %}text-violet-500{% endif %} ">
                 {{ link.title }}
               </a>
@@ -66,12 +68,12 @@
       </nav>
 
       <div class="hidden md:flex items-center justify-end md:flex-1 space-x-5">
-
-
+      <!-- CART -->
         <a href="{{ routes.cart_url }}" class="text-base text-gray-500 hover:text-gray-900 min-w-6">
           {% render 'icon-shopping-bag' %}
         </a>
 
+      <!-- LOGIN/REGISTER -->
         {% if shop.customer_accounts_enabled %}
           {% if customer %}
               <a href="{{ routes.account_url }}" class="text-base text-gray-500 hover:text-gray-900">account</a>
@@ -82,13 +84,13 @@
           {% endif %}
         {% endif %}
       </div>
+
     </div>
   </div>
 
 
   
   <!-- MOBILE MENU CONTAINER -->
-
   <div x-show="mobileMenuOpen" class="absolute z-10 top-0 inset-x-0 p-2 transform origin-top-left md:hidden">
     <div class="shadow-lg rounded-lg ring-1 ring-black ring-opacity-5 bg-white w-full">
       <div class="p-5 divide-y-2 divide-gray-50">
