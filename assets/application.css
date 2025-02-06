@@ -521,6 +521,9 @@
   }
 }
 @layer utilities {
+  .collapse {
+    visibility: collapse;
+  }
   .absolute {
     position: absolute;
   }
@@ -614,6 +617,9 @@
   .block {
     display: block;
   }
+  .contents {
+    display: contents;
+  }
   .flex {
     display: flex;
   }
@@ -625,6 +631,9 @@
   }
   .inline-flex {
     display: inline-flex;
+  }
+  .list-item {
+    display: list-item;
   }
   .table {
     display: table;
@@ -698,6 +707,9 @@
   .table-auto {
     table-layout: auto;
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
   .origin-top-left {
     transform-origin: top left;
   }
@@ -706,6 +718,9 @@
   }
   .cursor-pointer {
     cursor: pointer;
+  }
+  .resize {
+    resize: both;
   }
   .resize-none {
     resize: none;
@@ -1003,6 +1018,10 @@
   }
   .ring-black {
     --tw-ring-color: var(--color-black);
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
   .duration-300 {
     --tw-duration: 300ms;
@@ -1320,6 +1339,11 @@
   syntax: "*";
   inherits: false;
   initial-value: 0 0 #0000;
+}
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-duration {
   syntax: "*";
