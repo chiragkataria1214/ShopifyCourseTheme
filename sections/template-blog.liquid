@@ -1,5 +1,5 @@
 <div class="py-8">
-  <!-- Paginate blog articles, displaying 3 articles per page -->
+  <!-- Paginate blog articles, displaying articles per page -->
   {% paginate blog.articles by section.settings.number_of_blog_posts %}
     <h1 class="text-center text-3xl font-bold">{{ blog.title }} : {{ section.settings.blog_category_title }}</h1>
 
@@ -44,7 +44,7 @@
     <div class="max-w-6xl mx-auto">
       {% render 'pagination', pagination: paginate %}
     </div>
-
+    
   {% endpaginate %}
 </div>
 
@@ -65,7 +65,7 @@
       "default": "Read more"
     },
     {
-      "type": "range", //IMPT
+      "type": "range",
       "id": "number_of_blog_posts",
       "step": 1,
       "min": 1,

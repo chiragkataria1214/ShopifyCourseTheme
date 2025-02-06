@@ -29,8 +29,9 @@ TO TEST -- https://search.google.com/test/rich-results
         </div>
 
       {% when 'article_published_date' %}
+          <!-- IF BLOCK IS PUBLISH DATE -->
         <div class="flex items-center justify-center">
-          <div class="max-w-7xl text-center">
+          <div class="max-w-7xl text-center mt-4">
             {% if section.settings.enable_published_date %}
               <time itemprop="datePublished dateCreated" datetime="{{ article.published_at | date: '%Y-%m-%d' }}"><!-- SEO Tag: Date Published -->
                 {{- article.published_at | date: format: 'on_date' -}} 
@@ -38,7 +39,9 @@ TO TEST -- https://search.google.com/test/rich-results
             {% endif %}
           </div>
         </div>
+
       {% when 'featured_image' %}
+          <!-- IF BLOCK IS IMAGE -->
         <div itemprop="image" class="max-w-7xl bg-blue-100 rounded-lg mx-2 md:mx-auto overflow-hidden my-4">
           {% if article.image != blank %}
             <img
@@ -53,6 +56,7 @@ TO TEST -- https://search.google.com/test/rich-results
         </div>
 
       {% when 'article_content' %}
+          <!-- IF BLOCK IS ARTICLE CONTENT -->
         <div class="flex items-center justify-center">
           <div itemprop="articleBody" class="max-w-4xl"> <!-- SEO Tag: Content of the article -->
             {{ article.content }}
