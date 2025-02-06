@@ -4,8 +4,9 @@
     <a href="{{ product_product.url }}">
       {% if product_product.featured_image %}
         <div class="h-80 overflow-hidden">
+            {% comment %} Added following classes for image zoom in effect--"transition duration-1000 ease-in-out hover:scale-105 transform" {% endcomment %}
           <img
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover transition duration-1000 ease-in-out hover:scale-105 transform"
             src="{{ product_product.featured_image | img_url: 'medium' }}"
             alt="{{ product_product.featured_image.alt }}"
           >
