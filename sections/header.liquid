@@ -5,7 +5,7 @@
     <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
       <!-- STORE NAME -->
       <div class="flex justify-start lg:flex-1 truncate">
-        <h1 class="text-xl font-bold truncate">{{ section.settings.shop_name }}</h1><!-- Can edit using theme editor -->
+        <h1 class="text-xl font-bold truncate ">{{ section.settings.shop_name }}</h1><!-- Can edit using theme editor -->
       </div>
 
       <!-- MOBILE HAMBURGER MENU BUTTON -->
@@ -76,11 +76,11 @@
       <!-- LOGIN/REGISTER -->
         {% if shop.customer_accounts_enabled %}
           {% if customer %}
-              <a href="{{ routes.account_url }}" class="text-base text-gray-500 hover:text-gray-900">account</a>
+              <a href="{{ routes.account_url }}" class="text-base text-gray-500 hover:text-gray-900 mx-8">account</a>
               {{ 'Log out'  | customer_logout_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
           {% else %}
-              {{ 'Log in ' | customer_login_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
-              {{ 'Register' | customer_register_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
+              {{ 'Log in ' | customer_login_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900 mx-8"' }}
+              {{ 'Register' | customer_register_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900 mx-8"' }}
           {% endif %}
         {% endif %}
       </div>
